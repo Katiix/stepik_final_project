@@ -10,7 +10,7 @@ class LoginPage(BasePage):
 
     def should_be_login_url(self):
         login_url = self.browser.current_url
-        if 'logn' in login_url:
+        if 'login' in login_url:
         	assert True, "There is no substring 'login' on current page url"
 
     def should_be_login_form(self):
