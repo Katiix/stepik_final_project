@@ -31,3 +31,7 @@ class BasketPage(BasePage):
     def add_to_basket(self):
         link = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET)
         link.click()
+
+    def go_to_basket_page(self):
+        basket_link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        basket_link.click()
