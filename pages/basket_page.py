@@ -1,5 +1,6 @@
-from pages.base_page import BasePage
-from pages.locators import BasePageLocators
+from .base_page import BasePage
+from .locators import BasePageLocators
+from .locators import ProductPageLocators
 import pytest
 
 class BasketPage(BasePage):
@@ -26,3 +27,7 @@ class BasketPage(BasePage):
 
     def should_success_message_dissappear(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+    def add_to_basket(self):
+        link = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET)
+        link.click()
