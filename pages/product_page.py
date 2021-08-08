@@ -8,8 +8,8 @@ class ProductPage(BasePage):
         self.should_be_add_to_basket_button()
     def should_be_promo_in_url(self):
         product_url = self.browser.current_url
-        if '?promo=newYear' in product_url:
-            assert True, "There is no substring '?promo=newYear' on current page url"
+        if 'promo' in product_url:
+            assert True, "There is no substring 'promo' on current page url"
     def should_be_add_to_basket_button(self):
         assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET), "There is no add to basket button on this page"
 
@@ -20,14 +20,14 @@ class ProductPage(BasePage):
         link.click()
 
     def should_see_product_in_basket(self):
-        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
+        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME) 
         alert_message_product = self.browser.find_element(*ProductPageLocators.ALERT_MESSAGE_PRODUCT)
-        assert product_name.text in alert_message_product.text, "There is no such product in your basket"
+        assert product_name.text == alert_message_product.text, "There is no such product in your basket"
 
     def should_see_correct_basket_price(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
-        alert_message_price = self.browser.find_element(*ProductPageLocators.ALERT_MESSAGE_PRICE)
-        assert product_price.text in alert_message_price.text, "Your basket price is not what expected"
+        alert_message_price = self.browser.find_element(*ProductPageLocators.ALERT_MESSAGE_PRICE) 
+        assert product_price.text == alert_message_price.text, "Your basket price is not what expected"
 
    
 
